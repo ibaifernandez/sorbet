@@ -1,0 +1,1184 @@
+/*
+======================================================================
+Authorship: 
+- Name: Ibai Fernández
+- Client: Sorbet (for Noetic Creative)
+- Version: 1.0
+- Creation Date: January 18, 2024
+- Last Modified Date: January 19, 2024
+======================================================================
+Description:
+Styles block related to the landing page for Sorbet's seasonal campaign.
+It is based on four sections specified by the client:
+    - Hero Section
+    - How It Works
+    - Is Sorbet for You?
+    - Testimonials
+It includes a footer with copyright information.
+======================================================================
+*/
+
+/****************************************
+*                                       *
+*               Root Colors             *
+*                                       *
+*****************************************/
+
+:root {
+    --sorbet-black: #323232;
+    --sorbet-yellow: #fce464;
+    --sorbet-red: #ff5277;
+    --sorbet-white: #f8f8fc;
+    --sorbet-black-5: rgba(50, 50, 50, 0.5);
+    --sorbet-yellow-5: rgba(252, 228, 100, 0.5);
+    --sorbet-yellow-6: rgba(252, 228, 100, 0.6);
+    --sorbet-yellow-7: rgba(252, 228, 100, 0.7);
+    --sorbet-yellow-8: rgba(252, 228, 100, 0.8);
+    --sorbet-yellow-9: rgba(252, 228, 100, 0.9);
+    --sorbet-red-5: rgba(255, 82, 119, 0.5);
+    --sorbet-white-5: rgba(248, 248, 252, 0.5);
+    --sorbet-white-6: rgba(248, 248, 252, 0.6);
+    --sorbet-white-7: rgba(248, 248, 252, 0.7);
+    --sorbet-white-8: rgba(248, 248, 252, 0.8);
+    --sorbet-white-9: rgba(248, 248, 252, 0.9);
+}
+
+/****************************************
+*                                       *
+*           General Styles              *
+*                                       *
+*****************************************/
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: var(--sorbet-black-5);
+}
+
+a {
+    text-decoration: none;
+    color: var(--sorbet-white);
+}
+
+/****************************************
+*                                       *
+*            Hero Section               *
+*                                       *
+*****************************************/
+
+/*********** Hero Containers ************/
+
+.hero-container {
+    background: url(img/hero-pic.jpg);
+    background-size: 100% auto;
+    background-position: top center;
+    padding: 0 0 0;
+    height: 600px;
+    min-height: fit-content;
+    display: flex;
+    align-items: start;
+    box-shadow: 2px 2px 10px  var(--sorbet-black-5);
+    margin:2vh;
+    border-radius:25px;
+}
+
+.hero-left-container {
+    width: 60%;
+    border-radius:25px;
+}
+
+.hero-right-container {
+    padding-top:5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius:25px;
+}
+
+/*********** Hero Logo ************/
+
+.sorbet-logo {
+    width:250px;
+    height:auto;
+    margin:25px 0;
+}
+
+.sorbet-mobile-logo {
+    display:none;
+}
+
+/******* Hero Text Boxes *********/
+
+.hero-text {
+    background-color: var(--sorbet-white-7);
+    border-radius: 50px;
+    padding:20px 30px;
+    font-size:24px;
+    border: 2px solid var(--sorbet-red);
+    margin-bottom: 10px;
+    width:100%;
+}
+
+.hero-text:first-of-type {
+    margin-top:15px;
+}
+
+.hero-text:last-of-type {
+    background-color: var(--sorbet-yellow-7);
+    margin-bottom:25px;
+}
+
+.tick-symbol {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 50%;
+    background-color: var(--sorbet-red);
+    color: #fff;
+    text-align: center;
+    margin-right: 10px;
+}
+
+/********** Hero Button ******************
+*  Also, general class for every button  *
+*  as well as for the form button. This  *
+*  is the one that allows the form to    *
+*  pop up.                                *
+******************************************/
+
+.open-form-button,
+.submit-form-button {
+    border: 2px solid var(--sorbet-black);
+    border-radius: 50px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: 900;
+    width: 80%;
+    background-color: var(--sorbet-red);
+    margin: 0;
+    padding: 20px 30px;
+    text-align: center;
+    transition: background-color 0.5s ease-in-out, border-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+.open-form-button:hover,
+.submit-form-button:hover {
+    color: var(--sorbet-white);
+    border: 2px solid var(--sorbet-white);
+    background-color: var(--sorbet-black);
+}
+
+/****************************************
+*                                       *
+*      Form Overlay & Form Styles       *
+*                                       *
+*****************************************/
+
+.form-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.form-overlay.form-close {
+    display:none;
+    animation: fadeOut 0.5s ease-in-out;
+}
+
+.form-container {
+    position: fixed;
+    top: 10%;
+    left: 35%;
+    max-width: 500px;
+    border: 2px solid var(--sorbet-red);
+    border-radius: 50px;
+    background-color: var(--sorbet-white);
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    /* transform: translate(-50%, -50%); */
+    z-index: 1001;
+    pointer-events: none; 
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.form-container.form-open {
+    opacity: 1;
+    pointer-events: auto;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.form-container.form-close {
+    display:none;
+}
+
+.form-container.form-closed {
+    animation: fadeOut 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+fieldset {
+    border-radius: 25px;
+    padding:25px;
+}
+
+.form-title {
+    font-size: 18px;
+}
+
+.form-disclaimer {
+    font-size: 12px;
+    text-align: center;
+}
+
+select {
+    margin: 10px 0 20px;
+    padding: 10px;
+    width: 100%;
+    /* box-sizing: border-box; */
+    border-radius: 25px
+}
+
+.submit-button {
+    background-color: var(--sorbet-red);
+    color: var(--sorbet-white);
+    border: none;
+    cursor: pointer;
+}
+
+/****************************************
+*                                       *
+*          How it Works Section         *
+*                                       *
+*****************************************/
+
+.how-it-works {
+    margin:2vw 1vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 30px 50px; 
+    border: 2px solid var(--sorbet-white);
+    border-radius: 25px;
+    background: linear-gradient(to right, var(--sorbet-yellow), var(--sorbet-red));
+}
+
+.how-it-works-icon {
+    border: 2px solid var(--sorbet-black);
+    padding: 20px;
+    font-size: 72px;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--sorbet-white);
+    margin: 25px auto 0;
+    border-radius: 50%;
+    color: var(--sorbet-red)
+}
+
+.how-it-works h2 {
+    font-size:54px;
+}
+
+.how-it-works-modules {
+    display: flex;
+    justify-content: space-between;
+}
+.how-it-works-module {
+    width: 30%;
+    text-align: center;
+    background-color: var(--sorbet-white-8);
+    border: 2px solid var(--sorbet-red);
+    border-radius: 25px;
+    padding:50px 20px;
+}
+
+.how-it-works-icon-container {
+    border: 2px solid var(--sorbet-black);
+    padding: 20px;
+    max-width: fit-content;
+    margin: 0 auto;
+    border-radius: 50%;
+}
+
+.how-it-works-module-fa {
+    font-size: 56px;
+    color: var(--sorbet-red)
+}
+
+.how-it-works-module h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.how-it-works-module p {
+    font-size: 18px;
+    color: var(--sorbet-black)
+}
+
+.arrow-separator-right {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 32px;
+    padding: 0 20px;
+}
+
+.arrow-separator-down {
+    display: none;
+    align-items: center;
+    font-weight: bold;
+    font-size: 32px;
+    padding: 25px 20px;
+}
+
+.how-it-works h3 {
+    font-size:24px;
+    margin:50px 0 5px;
+}
+
+.how-it-works-button {
+    width:20%;
+}
+
+/****************************************
+*                                       *
+*      Is Sorbet for You Section       *
+*                                       *
+*****************************************/
+
+.is-sorbet-container {
+    background: url('img/is-sorbet-pic.jpg') no-repeat var(--sorbet-white);  
+    background-size: 100% auto;
+    background-position: top center;
+    padding: 100px 50px 70px;
+    height: 600px;
+    min-height: fit-content;
+    display: flex;
+    align-items: center;
+    box-shadow: 2px 2px 10px  var(--sorbet-black-5);
+    margin:2vh;
+    border-radius:25px;
+}
+
+.is-sorbet-left-container {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.is-sorbet-outer-container {
+    position:relative;
+    padding:60px 50px 0;
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.is-sorbet-icon-container {
+    position:absolute;
+    background-color: var(--sorbet-yellow);
+    border: 2px solid var(--sorbet-red);
+    top:-5%;
+    border-radius:50%;
+    width:200px;
+    height:200px;
+    box-shadow: 0 5px 5px var(--sorbet-black-5);
+}
+
+.sorbet-icon {
+    position:absolute;
+    top:40%;
+    left:12.5%;
+    width:150px;
+    height: auto;
+}
+.is-sorbet-content {
+    border: 2px solid var(--sorbet-red);
+    background-color: var(--sorbet-white-8);
+    border-radius:25px;
+    font-size: 24px;
+    width:80%;
+    padding:25px 15px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.is-sorbet-title {
+    display: flex;
+    width: 90%;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.is-sorbet-title h2 {
+    font-size:32px;
+    padding:60px 0 0;
+    margin:40px 0 0;
+}
+
+.is-sorbet-title-caption {
+    display: flex;
+    width: 90%;
+}
+
+.is-sorbet-title-caption h3 {
+    font-size:20px;
+    font-weight: bold;
+    margin:25px 0 0; 
+}
+
+.is-sorbet-content h4 {
+    font-size:24px;
+    font-weight: bold;
+    margin:25px 0 5px; 
+}
+
+.is-sorbet-content ul {
+    padding: 0;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size:20px;
+    margin:0 0 10px;
+}
+
+.is-sorbet-container .is-sorbet-right-left-container li {
+    font-size:18px;
+    margin-bottom: 10px;
+}
+
+.is-sorbet-right-container {
+    width: 60%;
+}
+
+/****************************************
+*                                       *
+*         Testimonial Section           *
+*                                       *
+*****************************************/
+
+.how-sorbet-container {
+    background: url('img/how-sorbet.jpg') no-repeat var(--sorbet-white);  
+    background-size: 100% auto;
+    background-position: top center;
+    padding: 100px 50px 100px;
+    height: 700px;
+    min-height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 2px 2px 10px  var(--sorbet-black-5);
+    margin: 2vw 2vh;
+    border-radius:25px;
+
+}
+
+.how-sorbet-left-container {
+    width:45%;
+}
+
+.how-sorbet-right-container {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    width: 100%;
+}
+
+.how-sorbet-content {
+    background-color: var(--sorbet-white-8);
+    border: 2px solid var(--sorbet-red);
+    border-radius: 25px;
+    width: 65%;
+    padding:35px 25px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.how-sorbet-title {
+    text-align:center;
+    text-transform: capitalize;
+}
+
+.how-sorbet-title h2 {
+    color: var(--sorbet-black);
+    font-size:28px;
+}
+
+.bottom-separator {
+    margin-top:-24px;
+    width: 50%;
+    margin: -10px auto 15px;
+    border-bottom: 3px solid var(--sorbet-red);
+}
+
+.how-sorbet-comment-icon {
+    font-size:48px;
+    color: var(--sorbet-red)
+}
+
+.how-sorbet-user-testimonial {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top:25px;
+}
+
+.how-sorbet-user-testimonial-left {
+    width:45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.how-sorbet-user-testimonial-pic-container {
+    position:relative;
+    width:250px;
+    height:250px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid var(--sorbet-red);
+}
+
+.how-sorbet-user-testimonial-name {
+    text-align: center;
+}
+
+.how-sorbet-user-testimonial-name h5 {
+    margin:20px 0 0;
+    font-size: 20px;
+}
+
+.how-sorbet-user-testimonial-name h6 {
+    margin:0;
+    font-size: 16px;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.how-sorbet-user-testimonial-pic {
+    position:absolute;
+    top:0;
+    left:-100px;
+    transform: scaleX(-1);
+    width:400px;
+    height: auto;
+}
+
+.how-sorbet-user-testimonial-right {
+    width:55%;
+}
+
+.how-sorbet-testimonial {
+    width: 100%;
+    display: flex;
+    margin-top:20px;
+}
+
+.how-sorbet-quote-icon {
+    font-size:36px;
+}
+
+.how-sorbet-testimonial p {
+    width:80%;
+    margin-left:10px;
+    font-size: 18px;
+}
+
+.how-sorbet-cta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+}
+
+.how-sorbet-cta h3 {
+    margin:40px 0 0;
+    font-size: 24px;
+}
+
+.how-sorbet-button {
+    width: 60%;
+    margin-top: 10px;
+    padding: 20px 30px;
+    text-align: center;
+    transition: background-color 0.5s ease-in-out, border-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+.how-sorbet-button:hover {
+    color: var(--sorbet-white);
+    border: 2px solid var(--sorbet-white);
+    background-color: var(--sorbet-black);
+}
+
+/****************************************
+*                                       *
+*                Footer                 *
+*                                       *
+*****************************************/
+
+footer {
+    background: linear-gradient(to right, var(--sorbet-red), var(--sorbet-yellow)); /* Cambia estos colores según tu paleta */
+    color: var(--sorbet-white);
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.logo-container img {
+    width: 100%; 
+    max-width: 150px;
+    height: auto;
+    }
+
+.copyright {
+    font-size: 14px;
+}
+
+.copyright p a {
+    font-weight: bold;
+    color: var(--sorbet-black);
+}
+
+/****************************************
+*                                       *
+*          Scroll to Top Button         *
+*                                       *
+*****************************************/
+
+/* Estilo del botón Scroll to Top */
+#scrollToTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--sorbet-black);
+    color: var(--sorbet-white);
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#scrollToTopBtn:hover {
+    background-color: #0056b3; /* Cambiar el color de fondo al pasar el ratón sobre el botón */
+}
+
+
+/****************************************
+*                                       *
+*            Media Queries              *
+*                                       *
+*****************************************/
+
+@media screen and (max-width: 1800px) {
+    .how-sorbet-container {
+        background-size: auto 100%;
+    }
+
+}
+@media screen and (max-width: 1600px) {
+    .is-sorbet-container {
+        background-size: cover;
+    }
+    .how-sorbet-container {
+        background-size: cover;
+        background-position: -200px 0;
+    }
+    .how-sorbet-left-container {
+        width: 35%;
+    }
+}
+@media screen and (max-width: 1445px) {
+    .how-it-works {
+        margin:1.5vw;
+    }
+    .how-it-works-button {
+        width:40%;
+    }
+    .how-sorbet-right-container {
+        width: 100%;
+        align-items: end;
+    }
+    .how-sorbet-user-testimonial-left {
+        justify-content: start;
+    }
+    .how-sorbet-testimonial p {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 1220px) {
+    .hero-container {
+        background: url('img/hero-pic-1220px.jpg');
+        background-size: 100% auto;
+        background-repeat: no-repeat;
+    }    
+    .hero-left-container {
+        width: 70%;
+    }
+    .open-form-button {
+        width: 100%;
+    }
+    .hero-text {
+        width: 80%;
+        font-size: 18px;
+    }
+    .how-it-works-button {
+        width:40%;
+    }
+    .is-sorbet-container {
+        background-image: url('img/is-sorbet-pic-1225px.jpg');
+        background-size: auto 100%;
+        padding-left:0;
+    }
+    .is-sorbet-left-container {
+        width: 60%;
+        padding: 10px;
+        align-items: self-end;
+    }
+    .is-sorbet-outer-container {
+        padding: 60px 10px 0; 
+    }
+    .is-sorbet-button {
+        width: 90%;
+    }
+    .how-sorbet-container {
+        background-position: -250px 0;
+    }
+    .how-sorbet-user-testimonial-pic-container {
+        width: 200px;
+        height: 200px;
+     }
+    .how-sorbet-user-testimonial-pic {
+        left:-125px
+    }
+    .how-sorbet-testimonial {
+        margin-top: 0;
+        flex-direction: column;
+        padding-left:10px;
+    }
+    .how-sorbet-quote-icon {
+        font-size: 24px;
+    }
+    .how-sorbet-testimonial p {
+        margin-left:0;
+        width:90%;
+    }
+    .how-sorbet-cta h3 {
+        margin-top: 20px;
+    }
+    .how-sorbet-button {
+        width:60%;
+    }
+    .how-it-works-icon {
+        font-size: 36px;
+        height: 50px;
+        width: 50px;
+    }
+    .how-it-works h2 {
+        font-size:36px;
+    }
+    .how-it-works-module-fa {
+        font-size: 36px;
+    }
+    .how-it-works h3 {
+        font-size:20px;
+        margin-top:30px;
+    }
+    .how-it-works-module p {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 1080px) {
+    .hero-left-container {
+        width: 65%;
+    }
+    .hero-right-container {
+        align-items: flex-end;
+    }
+    .is-sorbet-left-container {
+        width: 60%;
+        padding: 20px 0 0;
+    }
+    .is-sorbet-title h2 {
+        font-size: 30px;
+        margin: 60px 0 0;
+    }
+    .how-sorbet-container {
+        background-position: -300px 0;
+    }
+    .how-sorbet-content {
+        width:75%;
+    }
+    .how-sorbet-testimonial {
+        padding: 0 20px;
+    }
+    .how-sorbet-testimonial p {
+        padding: 0 20px 0 0;
+    }
+}
+
+@media screen and (max-width: 990px) {
+    .how-it-works {
+        margin:2.5vw;
+    }
+    .is-sorbet-left-container {
+        padding: 0;
+    }
+    .is-sorbet-icon-container {
+        top:-15px;
+        width: 150px;
+        height: 150px;
+        box-shadow: 0 5px 5px var(--sorbet-black-5);
+    }
+    .sorbet-icon {
+        position: absolute;
+        top: 40%;
+        left: 16%;
+        width: 100px;
+        height: auto;
+    }
+    .is-sorbet-title h2 {
+        font-size: 24px;
+        margin: 20px 0 0;
+    }
+    .how-sorbet-left-container {
+        width: 6%;
+    }
+    .how-sorbet-content {
+        width:100%;
+    }
+    .how-sorbet-testimonial {
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .hero-container {
+        background-size: auto 100%;
+    }
+    .hero-left-container {
+        width: 60%;
+    }
+    .sorbet-logo {
+        width:200px;
+    }
+    .is-sorbet-left-container {
+        width: 60%;
+        padding: 0;
+    }
+    .is-sorbet-content ul {
+        font-size: 18px;
+     }
+    .how-sorbet-button {
+        width:50%;
+    }
+}
+
+@media screen and (max-width: 875px) {
+    .hero-container {
+        background-position: -75px 0;
+    }
+    .hero-left-container {
+        width: 55%;
+    }
+    .is-sorbet-container {
+        height: 500px;
+    }
+    .is-sorbet-title h2 {
+        font-size: 22px;
+        margin: 20px 0 0;
+    }
+    .is-sorbet-content ul {
+        font-size:16px;
+    }
+    .is-sorbet-button {
+        font-size:18px;
+        padding: 10px 20px;
+        margin-top:10px;
+    }   
+    .how-sorbet-right-container {
+        padding: 0 0 0 20px;
+    }
+}
+
+@media screen and (max-width: 815px) {
+    .is-sorbet-title h2 {
+        font-size: 20px;
+    }
+    .is-sorbet-title-caption h3 {
+        font-size: 18px;
+    }
+    .is-sorbet-content ul {
+        font-size: 14px;
+    }
+    .is-sorbet-content h4 {
+        font-size: 20px;
+        margin-top:10px;
+    }
+}
+
+@media screen and (max-width: 775px) {
+    .hero-container {
+        background-position: -100px 0;
+    }
+    .hero-right-container {
+        margin-top:10px;
+        padding-top:10px;
+    }
+    .sorbet-logo {
+        margin-bottom:50px;
+        padding-right:10px;
+    }
+    .how-it-works-modules {
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .how-it-works-module {
+        width: 90%;
+    }
+    .arrow-separator-right {
+        display: none;
+    }
+    .arrow-separator-down {
+        display: flex;
+    }
+    .how-it-works-module p {
+        font-size: 18px;
+    }
+    .is-sorbet-title h2 {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 730px) {
+    .hero-container {
+        flex-direction: column;
+        align-items: end;
+        justify-content: center;
+        padding-bottom: 50px;
+    }
+    .hero-left-container {
+        width: 0%;
+    }
+    .hero-right-container {
+        width: 100%;
+        align-items: center;
+    }
+    .sorbet-logo {
+        display:none;
+    }
+    .sorbet-mobile-logo {
+        display:block;
+        width:175px;
+        height: auto;
+        padding: 0 40px 100px 0;
+    }
+    .hero-text {
+        background-color: var(--sorbet-white-9);
+        width: 50%;
+    }
+    .hero-text:last-of-type {
+        background-color: var(--sorbet-yellow-9);
+    }
+    .open-form-button {
+        width: 50%;
+        font-size:18px;
+        padding: 10px 15px;
+        width:40%
+    }
+    .how-it-works {
+        margin: 3vw;
+    }
+    .is-sorbet-container {
+        justify-content: center;
+        padding:80px 10px 60px;
+    }
+    .is-sorbet-left-container {
+        width: 100%;
+        align-items: center;
+    }
+    .is-sorbet-right-container {
+        width: 0%;
+    }
+    .is-sorbet-title h2 {
+        font-size: 32px;
+    }
+    .is-sorbet-title-caption h3 {
+        font-size: 24px;
+    }
+    .is-sorbet-content ul {
+        font-size:18px;
+    }
+    .how-sorbet-user-testimonial {
+        justify-content: space-between;
+    }
+    .how-sorbet-testimonial {
+        width: 100%;
+        padding-left: 15px ;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .sorbet-mobile-logo {
+        width:125px;
+    }
+    .is-sorbet-button {
+        width: 50%;
+    }
+    .how-sorbet-user-testimonial-pic-container {
+        width: 150px;
+        height: 150px;
+    }
+    .how-sorbet-user-testimonial-pic {
+        width:200px;
+        left:-35px;
+    }
+    .how-sorbet-button {
+        width: 55%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .hero-container {
+        background-position: -150px 0;
+    }
+    .how-it-works {
+        margin: 4vw;
+    }
+    .how-it-works h2 {
+        font-size: 28px;
+    }
+    .how-it-works-button {
+        width: 55%;
+    }
+    .is-sorbet-title h2 {
+        font-size: 24px;
+    }
+    .sorbet-mobile-logo {
+        width:100px;
+        padding-right: 20px;
+    }
+    .how-sorbet-container {
+        padding-top:120px;
+        padding-bottom:120px;
+    }
+    .how-sorbet-user-testimonial {
+        flex-direction: column;
+        align-items: center;
+    }
+    .how-sorbet-user-testimonial-right {
+        width: 100%;
+    }
+    .how-sorbet-testimonial p {
+        width: 90%;
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .how-sorbet-title h2 {
+        font-size: 24px;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .hero-text {
+        font-size: 16px;
+    }
+    .is-sorbet-button {
+        width: 60%;
+    }
+    .open-form-button {
+        width:50%;
+    }
+    .is-sorbet-button {
+        width: 70%;
+    }
+    .how-sorbet-button {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .how-sorbet-container {
+        height:800px;
+    }
+}
+
+@media screen and (max-width: 475px) {
+    .hero-text {
+        width:60%;
+    }
+    .is-sorbet-container {
+        height:550px;
+    }
+    .how-sorbet-container {
+        height:825px;
+    }
+}
+
+@media screen and (max-width: 475px) {
+    .is-sorbet-container {
+        height:600px;
+    }
+}
+

@@ -85,7 +85,7 @@ a {
 }
 
 .hero-left-container {
-    width: 60%;
+    width: 70%;
     border-radius:25px;
 }
 
@@ -733,6 +733,9 @@ footer {
 
 }
 @media screen and (max-width: 1600px) {
+    .hero-left-container {
+        width: 65%;
+    }
     .is-sorbet-container {
         background-size: cover;
     }
@@ -760,6 +763,12 @@ footer {
     }
     .how-sorbet-testimonial p {
         font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .hero-left-container {
+        width: 62.5%;
     }
 }
 
@@ -843,6 +852,12 @@ footer {
     }
     .how-it-works-module p {
         font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 1180px) {
+    .hero-left-container {
+        width: 67.5%;
     }
 }
 

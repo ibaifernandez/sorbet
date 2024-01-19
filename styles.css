@@ -764,11 +764,17 @@ footer {
     .how-sorbet-testimonial p {
         font-size: 16px;
     }
+    .form-container {
+        left:31%;
+    }
 }
 
 @media screen and (max-width: 1300px) {
     .hero-left-container {
         width: 62.5%;
+    }
+    .form-container {
+        left:29%;
     }
 }
 
@@ -853,11 +859,17 @@ footer {
     .how-it-works-module p {
         font-size: 14px;
     }
+    .form-container {
+        left:28%;
+    }
 }
 
 @media screen and (max-width: 1180px) {
     .hero-left-container {
         width: 67.5%;
+    }
+    .form-container {
+        left:27%;
     }
 }
 
@@ -887,6 +899,9 @@ footer {
     }
     .how-sorbet-testimonial p {
         padding: 0 20px 0 0;
+    }
+    .form-container {
+        left:25%;
     }
 }
 
@@ -923,6 +938,9 @@ footer {
     .how-sorbet-testimonial {
         padding: 0;
     }
+    .form-container {
+        left:23%;
+    }
 }
 
 @media screen and (max-width: 960px) {
@@ -944,6 +962,9 @@ footer {
      }
     .how-sorbet-button {
         width:50%;
+    }
+    .form-container {
+        left:22%;
     }
 }
 
@@ -972,6 +993,9 @@ footer {
     .how-sorbet-right-container {
         padding: 0 0 0 20px;
     }
+    .form-container {
+        left:19%;
+    }
 }
 
 @media screen and (max-width: 815px) {
@@ -987,6 +1011,9 @@ footer {
     .is-sorbet-content h4 {
         font-size: 20px;
         margin-top:10px;
+    }
+    .form-container {
+        left:17%;
     }
 }
 
@@ -1021,6 +1048,9 @@ footer {
     }
     .is-sorbet-title h2 {
         font-size: 18px;
+    }
+    .form-container {
+        left:14%;
     }
 }
 
@@ -1090,6 +1120,9 @@ footer {
         width: 100%;
         padding-left: 15px ;
     }
+    .form-container {
+        left:12%;
+    }
 }
 
 @media screen and (max-width: 640px) {
@@ -1109,6 +1142,9 @@ footer {
     }
     .how-sorbet-button {
         width: 55%;
+    }
+    .form-container {
+        left:7%;
     }
 }
 
@@ -1147,11 +1183,18 @@ footer {
         width: 90%;
         padding: 0;
     }
+    .form-container {
+        left:4.6%;
+    }
 }
 
 @media screen and (max-width: 560px) {
     .how-sorbet-title h2 {
         font-size: 24px;
+    }
+    .form-container {
+        left:10%;
+        max-width: 400px;
     }
 }
 

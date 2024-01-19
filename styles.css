@@ -198,7 +198,7 @@ a {
 .form-container {
     position: absolute;
     top: 10%;
-    left: 100%;
+    left: 35%;
     /* transform: translateX(-50%); */
     max-width: 500px;
     border: 2px solid var(--sorbet-red);
@@ -1263,7 +1263,7 @@ footer {
 
 @media screen and (max-width: 425px) {
     .form-container {
-        left:2.6%;
+        left:0%;
     }
 }
 

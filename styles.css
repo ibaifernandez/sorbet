@@ -1269,6 +1269,6 @@ footer {
 
 @media screen and (max-width: 410px) {
     .form-container {
-        left:1.6%;
+        left:0%;
     }
 }
